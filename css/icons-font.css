@@ -1,0 +1,113 @@
+@font-face {
+  font-family: 'icons_font';
+  src:
+    url('../fonts/icons_font.ttf?6nswok') format('truetype'),
+    url('../fonts/icons_font.woff?6nswok') format('woff'),
+    url('../fonts/icons_font.svg?6nswok#icons_font') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="_icon-"]::before, [class*=" _icon-"]::before {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icons_font' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+._icon-arrow-bottom-b:before {
+  content: "\e90d";
+}
+._icon-arrow-left-b:before {
+  content: "\e90e";
+}
+._icon-arrow-right-b:before {
+  content: "\e90f";
+}
+._icon-arrow-top-b:before {
+  content: "\e910";
+}
+._icon-close-icon:before {
+  content: "\e90b";
+}
+._icon-burger-menu2:before {
+  content: "\e90c";
+}
+._icon-burger-menu:before {
+  content: "\e900";
+}
+._icon-burger-menu3:before {
+  content: "\e911";
+}
+._icon-arrow-down-l:before {
+  content: "\e901";
+}
+._icon-arrow-left-l:before {
+  content: "\e902";
+}
+._icon-arrow-right-l:before {
+  content: "\e903";
+}
+._icon-arrow-up:before {
+  content: "\e904";
+}
+._icon-arrow-down:before {
+  content: "\e905";
+}
+._icon-arrow-up-right:before {
+  content: "\e906";
+}
+._icon-checked:before {
+  content: "\e907";
+}
+._icon-locstion:before {
+  content: "\e908";
+}
+._icon-phone:before {
+  content: "\e909";
+}
+._icon-phone-call:before {
+  content: "\e912";
+}
+._icon-email:before {
+  content: "\e90a";
+}
+._icon-clock:before {
+  content: "\e913";
+}
+._icon-pr-phone:before {
+  content: "\e914";
+}
+._icon-pr-mail:before {
+  content: "\e915";
+}
+._icon-pr-location:before {
+  content: "\e916";
+}
+._icon-pr-calendar:before {
+  content: "\e917";
+}
+._icon-facebook:before {
+  content: "\e918";
+}
+._icon-instagram:before {
+  content: "\e919";
+}
+._icon-youtube:before {
+  content: "\e91a";
+}
+._icon-google:before {
+  content: "\e91b";
+}
+._icon-tiktok:before {
+  content: "\e91c";
+}
