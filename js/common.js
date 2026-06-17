@@ -176,8 +176,8 @@ document.addEventListener('DOMContentLoaded', function () {
 				block.classList.remove('t_active');
 				button.setAttribute('aria-expanded', 'false');
 			} else {
-				content.style.maxHeight = content.scrollHeight + 20 + 'px';
-				content.style.paddingBottom = '20px';
+				content.style.maxHeight = content.scrollHeight + 18 + 'px';
+				content.style.paddingBottom = '18px';
 				button.classList.add('v_active');
 				content.classList.add('c_active');
 				block.classList.add('t_active');

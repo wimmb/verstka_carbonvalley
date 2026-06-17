@@ -1131,12 +1131,12 @@ ul.footer-menu__list > li.current-menu-item a {
 .block__toggles {
 	display: flex;
 	flex-direction: column;
-	gap: 24px;
+	gap: 20px;
 }
 
 .block__toggle {
 	background-color: var(--gray-color);
-	padding: 20px 20px 0;
+	padding: 18px 18px 0;
 	border-radius: var(--border-radius-12);
 	transition: all 0.3s ease;
 	overflow: hidden;
@@ -1149,7 +1149,7 @@ ul.footer-menu__list > li.current-menu-item a {
 	align-items: start;
 	gap: 14px;
 	cursor: pointer;
-	padding-bottom: 20px;
+	padding-bottom: 19px;
 }
 
 .toggle__header-title {
