@@ -7,7 +7,7 @@ $(document).ready(function () {
 		});
 	}
 
-    // Reviews carousel swiper
+	// Reviews carousel swiper
 	const reviews__carousel = document.querySelector('.reviews__carousel');
 	if (reviews__carousel) {
 		const swiper = new Swiper(reviews__carousel, {
@@ -101,18 +101,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Scroll to Top
 document.addEventListener("DOMContentLoaded", function() {
-    const scrollTopBtn = document.getElementById("scr_top");
-    const scrollOffset = 800;
+	const scrollTopBtn = document.getElementById("scr_top");
+	const scrollOffset = 800;
 
 	if (!scrollTopBtn) return;
 
-    window.addEventListener("scroll", () => {
-        scrollTopBtn.classList.toggle("visible", window.scrollY > scrollOffset);
-    });
+	window.addEventListener("scroll", () => {
+		scrollTopBtn.classList.toggle("visible", window.scrollY > scrollOffset);
+	});
 
-    scrollTopBtn.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    });
+	scrollTopBtn.addEventListener("click", () => {
+		window.scrollTo({ top: 0, behavior: "smooth" });
+	});
 });
 
 // Default carousel swiper
@@ -153,36 +153,117 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Toggles
 document.addEventListener('DOMContentLoaded', function () {
-    const toggleBlocks = document.querySelectorAll('.block__toggle');
-    if (toggleBlocks.length === 0) {
-        return;
-    }
-    toggleBlocks.forEach(block => {
-        const header = block.querySelector('.toggle__header');
-        const button = block.querySelector('.toggle__header-btn');
-        const content = block.querySelector('.toggle__content');
-        if (!header || !button || !content) {
-            return;
-        }
+	const toggleBlocks = document.querySelectorAll('.block__toggle');
+	if (toggleBlocks.length === 0) {
+		return;
+	}
+	toggleBlocks.forEach(block => {
+		const header = block.querySelector('.toggle__header');
+		const button = block.querySelector('.toggle__header-btn');
+		const content = block.querySelector('.toggle__content');
+		if (!header || !button || !content) {
+			return;
+		}
 
-        button.setAttribute('aria-expanded', 'false');
+		button.setAttribute('aria-expanded', 'false');
 
-        header.addEventListener('click', function () {
-            if (content.style.maxHeight) {
-                content.style.maxHeight = null;
-                content.style.paddingBottom = null;
-                button.classList.remove('v_active');
-                content.classList.remove('c_active');
-                block.classList.remove('t_active');
-                button.setAttribute('aria-expanded', 'false');
-            } else {
-                content.style.maxHeight = content.scrollHeight + 20 + 'px';
-                content.style.paddingBottom = '20px';
-                button.classList.add('v_active');
-                content.classList.add('c_active');
-                block.classList.add('t_active');
-                button.setAttribute('aria-expanded', 'true');
-            }
-        });
-    });
+		header.addEventListener('click', function () {
+			if (content.style.maxHeight) {
+				content.style.maxHeight = null;
+				content.style.paddingBottom = null;
+				button.classList.remove('v_active');
+				content.classList.remove('c_active');
+				block.classList.remove('t_active');
+				button.setAttribute('aria-expanded', 'false');
+			} else {
+				content.style.maxHeight = content.scrollHeight + 20 + 'px';
+				content.style.paddingBottom = '20px';
+				button.classList.add('v_active');
+				content.classList.add('c_active');
+				block.classList.add('t_active');
+				button.setAttribute('aria-expanded', 'true');
+			}
+		});
+	});
+});
+
+// SEO text toggle
+document.addEventListener('DOMContentLoaded', function () {
+	const seoSection = document.querySelector('.seotxt__content');
+	if (!seoSection) {
+		return;
+	}
+
+	const contentWrap = seoSection.querySelector('.seotxt__text');
+	const shadowBl = seoSection.querySelector('.seotxt__buttons');
+	const button = seoSection.querySelector('.seotxt__btn');
+
+	if (!contentWrap || !shadowBl || !button) {
+		return;
+	}
+
+	const minHeight = 280;
+
+	contentWrap.style.maxHeight = minHeight + 'px';
+
+	button.addEventListener('click', function () {
+		if (contentWrap.style.maxHeight && parseInt(contentWrap.style.maxHeight) > minHeight) {
+			contentWrap.style.maxHeight = minHeight + 'px';
+			shadowBl.classList.remove('shadow--none');
+			button.classList.remove('btn--active');
+		} else {
+			contentWrap.style.maxHeight = contentWrap.scrollHeight + 'px';
+			shadowBl.classList.add('shadow--none');
+			button.classList.add('btn--active');
+		}
+	});
+});
+
+// File upload custom UI (max 3 images)
+document.addEventListener('DOMContentLoaded', function () {
+	const upload = document.querySelector('.file-upload');
+	if (!upload) return;
+
+	const input = upload.querySelector('#file_input');
+	const list = upload.querySelector('#file_list');
+	if (!input || !list) return;
+
+	const MAX_FILES = 3;
+	let files = [];
+
+	input.addEventListener('change', function (e) {
+		addFiles(Array.from(e.target.files || []));
+		input.value = '';
+	});
+
+	function addFiles(newFiles) {
+		for (const file of newFiles) {
+			if (!file.type.startsWith('image/')) continue;
+			if (files.length >= MAX_FILES) break;
+			const exists = files.some(f => f.name === file.name && f.size === file.size);
+			if (!exists) files.push(file);
+		}
+		render();
+	}
+
+	function render() {
+		list.innerHTML = '';
+		files.forEach(function (file, index) {
+			const item = document.createElement('div');
+			item.className = 'file-item';
+			item.innerHTML =
+				'<span class="file-item__name">' + file.name + '</span>' +
+				'<button type="button" class="file-remove" data-index="' + index + '" aria-label="Remove file">×</button>';
+			list.appendChild(item);
+		});
+	}
+
+	list.addEventListener('click', function (e) {
+		const btn = e.target.closest('.file-remove');
+		if (!btn) return;
+		const index = parseInt(btn.getAttribute('data-index'), 10);
+		if (isNaN(index)) return;
+		files.splice(index, 1);
+		render();
+	});
 });
