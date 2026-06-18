@@ -115,6 +115,24 @@ document.addEventListener("DOMContentLoaded", function() {
 	});
 });
 
+//Hero slider
+document.addEventListener("DOMContentLoaded", function () {
+	const heroSlides = document.querySelector(".hero__slider");
+
+	if (heroSlides) {
+		const slides = heroSlides.querySelectorAll("img");
+		if (slides.length <= 0) return;
+
+		let current = 0;
+
+		setInterval(() => {
+			slides[current].classList.remove("hs--active");
+			current = (current + 1) % slides.length;
+			slides[current].classList.add("hs--active");
+		}, 2000);
+	}
+});
+
 // Default carousel swiper
 document.addEventListener('DOMContentLoaded', function () {
 	const breakpoint = 991.98;

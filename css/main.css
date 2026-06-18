@@ -1269,14 +1269,25 @@ ul.footer-menu__list > li.current-menu-item a {
 }
 
 .hero__slider {
+	position: relative;
 	max-width: 600px;
+	aspect-ratio: 4 / 3;
 	margin: 0 auto;
 	text-align: center;
 }
 
 .hero__slider > img {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
 	pointer-events: none;
 	filter: drop-shadow(10px -5px 10px #090909);
+	opacity: 0;
+}
+
+.hero__slider > img.hs--active {
+	opacity: 1;
 }
 
 .statsbar {
@@ -2186,7 +2197,7 @@ ul.footer-menu__list > li.current-menu-item a {
 		font-size: 38px;
 	}
 	.hero__wrap {
-		padding: 55px 0;
+		padding: 55px 0 50px;
 	}
 	.hero__content-inner {
 		max-width: 655px;
